@@ -1,3 +1,4 @@
+Readme
 Windows Imaging Script
 
 This is a batch script designed to simplify the process of capturing and applying Windows images using the Deployment Image Servicing and Management (DISM) tool. The script runs in the Windows Preinstallation Environment (WinPE) and offers several features:
