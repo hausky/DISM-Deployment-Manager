@@ -7,7 +7,7 @@ This repository contains a batch script designed to streamline the process of ca
 - **Automated Drive Search**: Locates the volume containing an `Images` folder.
 - **Image Capture**: Offers to captures an image of the current Windows installation and saves it in the "Images" folder (from whatever drive).
 - **Drive Formatting**: Offers the option to format the current drive for Windows UEFI installation.
-- **Image Application**: Lists and applies available `.wim` images.
+- **Image Application**: Lists and applies available `.wim` images from the "Images" folder.
 - **Boot Record Creation**: Creates a boot record with BCDBoot.
 - **Reboot Option**: Offers to reboot the computer after the process is complete.
 
