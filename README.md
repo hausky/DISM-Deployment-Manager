@@ -1,32 +1,45 @@
-Readme
-Windows Imaging Script
+# Windows Imaging Script
 
-This is a batch script designed to simplify the process of capturing and applying Windows images using the Deployment Image Servicing and Management (DISM) tool. The script runs in the Windows Preinstallation Environment (WinPE) and offers several features:
+This repository contains a batch script designed to streamline the process of capturing and applying Windows images using the Deployment Image Servicing and Management (DISM) tool. It is intended to run in the Windows Preinstallation Environment (WinPE). 
 
-Searching for a volume with an Images folder.
-Capturing an image of the current Windows installation.
-Formatting the current drive with a Windows UEFI scheme.
-Listing and applying available .wim images.
-Creating a boot record with BCDBoot.
-Offering to reboot the computer after the process is complete.
-Prerequisites
-A Windows system running on a standard WinPE environment.
-Access to the command prompt.
-An Images folder on a disk with Windows images (.wim files).
-Usage
-To use this script, follow these steps:
+## Features
 
-Open the command prompt in the WinPE environment.
+- **Automated Drive Search**: Locates the volume containing an `Images` folder.
+- **Image Capture**: Captures an image of the current Windows installation.
+- **Drive Formatting**: Offers option to format the current drive with a Windows UEFI scheme.
+- **Image Application**: Lists and applies available `.wim` images.
+- **Boot Record Creation**: Creates a boot record with BCDBoot.
+- **Reboot Option**: Offers to reboot the computer after the process is complete.
 
-Run the batch script. You can do this by navigating to the script's location using the cd command, then typing the name of the script and pressing Enter.
+## Prerequisites
 
-Follow the prompts in the command line interface. The script will guide you through the process of capturing and applying an image, formatting the drive, and restarting the computer.
+- A Windows system running in a standard WinPE environment.
+- Access to the command prompt.
+- An `Images` folder on a disk with Windows images (`.wim` files).
 
-Customization
-You can customize this script according to your needs. The areas of the script that you might want to modify include the image capturing commands, the UEFI disk formatting commands, and the DISM command for applying the selected WIM file.
+## Usage
 
-Note
-This script is provided as-is, and you bear the risk of using it. It is intended to be used by professional IT staff familiar with Windows deployment services.
+1. Open the command prompt in the WinPE environment.
+2. Navigate to the directory containing the batch script using `cd`.
+3. Run the script by typing its name and pressing Enter.
+4. Follow the prompts in the command line interface. The script will guide you through each step of the process.
 
-Contributing
-If you have suggestions for improving this script, please open an issue or submit a pull request.
+## Customization
+
+You can modify this script according to your requirements. The areas of the script you might want to customize include:
+
+- Image capturing commands.
+- UEFI disk formatting commands.
+- DISM command for applying the selected WIM file.
+
+## Note
+
+Please understand that this script is provided as-is, and you bear the risk of using it. It is intended to be utilized by professional IT staff familiar with Windows deployment services.
+
+## Contributing
+
+Suggestions for improvements are welcome. Please open an issue or submit a pull request to contribute.
+
+## License
+
+This project is licensed under the terms of the MIT license.
