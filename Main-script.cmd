@@ -103,7 +103,7 @@ if /i "%createboot%"=="yes" (
     echo Skipping boot record creation.
 )
 
-set /p runsearch=Do you want to run another script and get a list of options in the scripts folder? (yes/no): 
+set /p runsearch=Do you want to run another script and get a list of options from the scripts folder? (yes/no): 
 if /i "%runsearch%"=="yes" (
     echo Running script-search.cmd...
     if exist "%~dp0\script-search.cmd" (
