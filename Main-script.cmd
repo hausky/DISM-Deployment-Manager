@@ -135,13 +135,3 @@ for /R "%imagesdrive%:\Images" %%F in (*.wim) do (
 goto :eof
 
 exit /b 0
-
-:list_wim_files
-echo Available WIM files:
-set "wimcount=0"
-for /R "%imagesdrive%:\Images" %%F in (*.wim) do (
-    set /A "wimcount+=1"
-    set "wimfilename=%%~nxF"
-    echo - [!wimcount!] !wimfilename!
-)
-goto :eof
