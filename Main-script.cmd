@@ -94,8 +94,26 @@ echo Applying WIM file %wimdescription% from volume %imagesdrive%...
 dism /apply-image /imagefile:"%wimfile%" /index:1 /applydir:C:\
 
 :end
-echo Creating boot record...
-bcdboot C:\Windows /s S:
+
+set /p createboot=Do you want to create a boot record? (yes/no): 
+if /i "%createboot%"=="yes" (
+    echo Creating boot record...
+    bcdboot C:\Windows /s S:
+) else (
+    echo Skipping boot record creation.
+)
+
+set /p runsearch=Do you want to run another script and get a list of options in the scripts folder? (yes/no): 
+if /i "%runsearch%"=="yes" (
+    echo Running script-search.cmd...
+    if exist "%~dp0\script-search.cmd" (
+        call "%~dp0\script-search.cmd"
+    ) else (
+        echo ERROR: script-search.cmd not found in the same folder as this script.
+    )
+) else (
+    echo Skipping script-search.cmd.
+)
 
 set /p restart=Do you want to restart the computer? (yes/no): 
 if /i "%restart%"=="yes" (
@@ -105,6 +123,17 @@ if /i "%restart%"=="yes" (
     echo You can keep using the command prompt.
     pause
 )
+
+:list_wim_files
+echo Available WIM files:
+set "wimcount=0"
+for /R "%imagesdrive%:\Images" %%F in (*.wim) do (
+    set /A "wimcount+=1"
+    set "wimfilename=%%~nxF"
+    echo - [!wimcount!] !wimfilename!
+)
+goto :eof
+
 exit /b 0
 
 :list_wim_files
