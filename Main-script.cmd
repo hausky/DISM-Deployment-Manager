@@ -1,4 +1,4 @@
-@echo off
+@echo off                                                          
 echo  #     # ### #     #                                         
 echo  #  #  #  #  ##   ##                                         
 echo  #  #  #  #  # # # #                                         
@@ -26,7 +26,7 @@ if "%imagesdrive%"=="" (
 )
 
 call :capture_image
-if /i "%endCapture%"=="stop" (
+if /i "%endCapture%"=="N" (
     goto end
 )
 
@@ -53,20 +53,20 @@ for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
 goto :eof
 
 :capture_image
-set /p capture=Do you want to capture an image? (yes/no):
-if /i "%capture%"=="yes" (
+set /p capture=Do you want to capture an image? (Y/N):
+if /i "%capture%"=="Y" (
     echo Capturing an image to the Image folder on your USB...
     dism /capture-image /imagefile:"%imagesdrive%:\Images\captured.wim" /capturedir:C:\ /name:Captured /compress:max
     echo Image captured successfully!
 ) else (
     echo Skipping image capture.
 )
-set /p endCapture=Do you want to stop the script now or continue to apply an image? (stop/continue):
+set /p endCapture=Do you want to apply an image? (Y/N):
 goto :eof
 
 :format_drive
-set /p format=Do you want to format the drive with Windows UEFI scheme? (yes/no): 
-if /i "%format%"=="yes" (
+set /p format=Do you want to format the drive with Windows UEFI scheme? (Y/N): 
+if /i "%format%"=="Y" (
     echo Formatting drive for Windows UEFI...
     diskpart /s diskpart_script.txt
     echo Drive formatted successfully!
@@ -95,16 +95,16 @@ dism /apply-image /imagefile:"%wimfile%" /index:1 /applydir:C:\
 
 :end
 
-set /p createboot=Do you want to create a boot record? (yes/no): 
-if /i "%createboot%"=="yes" (
+set /p createboot=Do you want to create a boot record? (Y/N): 
+if /i "%createboot%"=="Y" (
     echo Creating boot record...
     bcdboot C:\Windows /s S:
 ) else (
     echo Skipping boot record creation.
 )
 
-set /p runsearch=Do you want to run another script and get a list of options from the scripts folder? (yes/no): 
-if /i "%runsearch%"=="yes" (
+set /p runsearch=Do you want to run another script and get a list of options from the scripts folder? (Y/N): 
+if /i "%runsearch%"=="Y" (
     echo Running script-search.cmd...
     if exist "%~dp0\script-search.cmd" (
         call "%~dp0\script-search.cmd"
@@ -115,8 +115,8 @@ if /i "%runsearch%"=="yes" (
     echo Skipping script-search.cmd.
 )
 
-set /p restart=Do you want to restart the computer? (yes/no): 
-if /i "%restart%"=="yes" (
+set /p restart=Do you want to restart the computer? (Y/N): 
+if /i "%restart%"=="Y" (
     echo Restarting the computer...
     wpeutil reboot
 ) else (
